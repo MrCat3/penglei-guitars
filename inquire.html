@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inquire | Peng Lei Guitars</title>
+    <meta
+      name="description"
+      content="Write to Peng Lei about a handmade steel-string guitar. The form prepares an email in your browser. It does not take payment or reserve an instrument."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+SC:wght@500;600&family=Source+Sans+3:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body { margin: 0; background: #12100e; color: #f4efe8; }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="/">
+        <span class="brand-en">Peng Lei Guitars</span>
+        <span class="brand-zh" lang="zh-Hans">制琴师 · 彭磊</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Open menu</span>
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="/"><span class="en">Home</span> <span class="zh" lang="zh-Hans">首页</span></a>
+        <a href="/instruments.html"><span class="en">Instruments</span> <span class="zh" lang="zh-Hans">作品</span></a>
+        <a href="/available.html"><span class="en">Available</span> <span class="zh" lang="zh-Hans">现货</span></a>
+        <a href="/about.html"><span class="en">About</span> <span class="zh" lang="zh-Hans">关于</span></a>
+        <a href="/inquire.html" aria-current="page"><span class="en">Inquire</span> <span class="zh" lang="zh-Hans">询价</span></a>
+      </nav>
+    </header>
+
+    <main id="content" class="page-main">
+      <div class="wrap inquire-layout">
+        <header class="inquire-intro">
+          <p class="kicker">Inquire <span class="zh" lang="zh-Hans">询价</span></p>
+          <h1>Write to Peng Lei.</h1>
+          <p class="zh-display inquire-zh" lang="zh-Hans">写信给彭磊。</p>
+          <p class="hint inquire-lead">This is a letter, not an order. Nothing is reserved, and nothing is charged on this page.</p>
+          <p class="hint" lang="zh-Hans">这是一封信，不是订单。这一页不会预留吉他，也不会收款。</p>
+          <a class="mail-address" href="mailto:inquire@pengleiguitars.com">inquire@pengleiguitars.com</a>
+          <p class="hint">If the form is awkward, write to that address from your own mail.</p>
+          <p class="hint" lang="zh-Hans">如果表单不好用，用你自己的邮箱写到这个地址即可。</p>
+        </header>
+
+        <div>
+          <form id="inquire-form" method="post" action="mailto:inquire@pengleiguitars.com" enctype="text/plain">
+            <div class="fields">
+              <div class="field">
+                <label for="name">Name <span class="zh" lang="zh-Hans">姓名</span></label>
+                <input id="name" name="name" type="text" autocomplete="name" required maxlength="120" />
+              </div>
+              <div class="field">
+                <label for="country">Country or region <span class="zh" lang="zh-Hans">国家或地区</span></label>
+                <input id="country" name="country" type="text" autocomplete="country-name" required maxlength="120" />
+              </div>
+              <div class="field">
+                <label for="type">Guitar type of interest <span class="zh" lang="zh-Hans">感兴趣的琴型</span></label>
+                <select id="type" name="type" required>
+                  <option>Not sure yet / 尚未确定</option>
+                  <option>Dreadnought / D 型</option>
+                  <option>Orchestra Model (OM)</option>
+                  <option>000</option>
+                  <option>Slope-shoulder / 斜肩</option>
+                  <option>Something else — described in the message / 其他，见留言</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="style">Playing style <span class="zh" lang="zh-Hans">演奏方式</span></label>
+                <p class="field-hint" id="style-hint">For example: fingerstyle, flatpicking, strumming with a voice, or a mix. <span lang="zh-Hans">例如：指弹、拨片、边弹边唱，或混合。</span></p>
+                <input id="style" name="style" type="text" required maxlength="160" aria-describedby="style-hint" placeholder="Fingerstyle, flatpicking…" />
+              </div>
+              <div class="field">
+                <label for="budget">Your budget range <span class="zh" lang="zh-Hans">你的预算区间</span></label>
+                <p class="field-hint" id="budget-hint">Your range, for the conversation. It is not a price from this shop. USD is only a shared scale — use the message for another currency. <span lang="zh-Hans">这是你的区间，用来沟通，不是本工坊报价。美元只是共同刻度，其他货币请写在留言里。</span></p>
+                <select id="budget" name="budget" required aria-describedby="budget-hint">
+                  <option>Not sure yet / 尚未确定</option>
+                  <option>Under USD 2,000 / 2,000 美元以下</option>
+                  <option>USD 2,000–4,000</option>
+                  <option>USD 4,000–7,000</option>
+                  <option>USD 7,000–12,000</option>
+                  <option>Above USD 12,000 / 12,000 美元以上</option>
+                  <option>Another currency — written in the message / 其他货币，见留言</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="message">Message <span class="zh" lang="zh-Hans">留言</span></label>
+                <textarea id="message" name="message" required minlength="8" maxlength="4000"></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-fill" type="submit">
+                <span class="btn-text">
+                  <span class="btn-en">Prepare message</span>
+                  <span class="btn-zh" lang="zh-Hans">生成信件</span>
+                </span>
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+            <p class="hint form-store-note">The page keeps the note in this browser only long enough to hand it to your email app. It is not stored.</p>
+            <p class="hint" lang="zh-Hans">这一页只在浏览器里把信交给你的邮件应用，不保存。</p>
+          </form>
+
+          <noscript>
+            <p class="hint form-store-note">
+              JavaScript is off, so the form cannot assemble the letter. Email
+              <a href="mailto:inquire@pengleiguitars.com">inquire@pengleiguitars.com</a>
+              directly.
+            </p>
+          </noscript>
+
+          <div id="form-result" class="form-result" hidden role="status" aria-live="polite">
+            <h2>Ready to send</h2>
+            <p class="zh-title" lang="zh-Hans">可以发送了</p>
+            <p>This page does not deliver the message. Open it in your email app, or copy the text and send it yourself.</p>
+            <p lang="zh-Hans">本页不会替你送达。请在邮件应用中打开，或复制正文自己发送。</p>
+            <p id="mailto-warn" class="warn" hidden>
+              This note is long for a mailto link. Copy the text into an email instead. The button opens a blank message to the same address.
+              <span lang="zh-Hans">正文较长，不适合放进 mailto 链接。请复制到邮件里。按钮只会打开一封寄往同一地址的空信。</span>
+            </p>
+            <div class="form-actions">
+              <a class="btn btn-fill" id="mailto-link" href="mailto:inquire@pengleiguitars.com">
+                <span class="btn-text">
+                  <span class="btn-en">Open in email</span>
+                  <span class="btn-zh" lang="zh-Hans">打开邮件</span>
+                </span>
+              </a>
+              <button class="btn btn-line btn-small" id="copy-message" type="button">Copy 复制</button>
+            </div>
+            <label class="sr-only" for="composed">Prepared letter</label>
+            <textarea id="composed" readonly></textarea>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <p>Independent luthier. Handmade in small numbers.</p>
+          <p class="zh-line" lang="zh-Hans">独立制琴。小批量手工。</p>
+        </div>
+        <a class="footer-mail" href="mailto:inquire@pengleiguitars.com">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="5" width="18" height="14" rx="1.5" />
+            <path d="M4 7l8 6 8-6" />
+          </svg>
+          inquire@pengleiguitars.com
+        </a>
+      </div>
+    </footer>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
