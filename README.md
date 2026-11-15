@@ -1,6 +1,6 @@
 # Peng Lei Guitars
 
-Preview site for Peng Lei (彭磊), an independent maker of traditional American-style steel-string guitars. English and Chinese are both on every page. The English text is complete on its own.
+Preview site for Peng Lei (彭磊), an independent maker of traditional American-style steel-string guitars. The visitor chooses one language at a time. English is the default. The header control is labeled EN and CH. The choice is stored in `localStorage` (`plg-lang`) and applies on every page. A URL can set it with `?lang=en` or `?lang=ch`.
 
 Static site, built with Vite. There is no cart, no account, no dealer list, and no backend. The inquiry form only prepares a letter in the browser.
 
@@ -28,11 +28,11 @@ npm run preview
 
 | Path | Page |
 | --- | --- |
-| `/` | Home 首页 |
-| `/instruments.html` | Instruments 作品 |
-| `/available.html` | Available 现货 |
-| `/about.html` | About 关于 |
-| `/inquire.html` | Inquire 询价 |
+| `/` | Home / 首页 |
+| `/instruments.html` | Instruments / 作品 |
+| `/available.html` | Available / 现货 |
+| `/about.html` | About / 关于 |
+| `/inquire.html` | Inquire / 询价 |
 
 ## Key copy
 
