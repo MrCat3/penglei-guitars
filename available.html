@@ -1,9 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
   <head>
+    <script>
+      ;(function () {
+        var lang = "en"
+        try {
+          var query = new URLSearchParams(location.search).get("lang")
+          var stored = localStorage.getItem("plg-lang")
+          if (query === "en" || query === "ch") lang = query
+          else if (stored === "ch") lang = "ch"
+          if (query === "en" || query === "ch") localStorage.setItem("plg-lang", query)
+        } catch (error) {}
+        document.documentElement.dataset.lang = lang
+        document.documentElement.lang = lang === "ch" ? "zh-Hans" : "en"
+      })()
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Available | Peng Lei Guitars</title>
+    <title data-title-en="Available | Peng Lei Guitars" data-title-ch="现货 | 制琴师 · 彭磊">Available | Peng Lei Guitars</title>
     <meta
       name="description"
       content="Peng Lei Guitars is built to order. No finished guitar is offered for sale on this site. Current wait time is to be confirmed."
@@ -17,37 +31,46 @@
     />
     <style>
       body { margin: 0; background: #12100e; color: #f4efe8; }
+      html[data-lang="en"] [data-lang="ch"],
+      html[data-lang="ch"] [data-lang="en"] { display: none !important; }
     </style>
   </head>
   <body>
-    <a class="skip" href="#content">Skip to content</a>
+    <a class="skip" href="#content"><span data-lang="en">Skip to content</span><span lang="zh-Hans" data-lang="ch">跳到正文</span></a>
     <header class="site-header">
       <a class="brand" href="/">
-        <span class="brand-en">Peng Lei Guitars</span>
-        <span class="brand-zh" lang="zh-Hans">制琴师 · 彭磊</span>
+        <span class="brand-en" data-lang="en">Peng Lei Guitars</span>
+        <span class="brand-zh" lang="zh-Hans" data-lang="ch">制琴师 · 彭磊</span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="sr-only">Open menu</span>
+      <div class="header-end">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-switch-btn" data-set-lang="en" aria-pressed="true">EN</button>
+          <span class="lang-switch-sep" aria-hidden="true">|</span>
+          <button type="button" class="lang-switch-btn" data-set-lang="ch" aria-pressed="false">CH</button>
+        </div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only" data-open-en="Open menu" data-close-en="Close menu" data-open-ch="打开菜单" data-close-ch="关闭菜单">Open menu</span>
         <span class="nav-toggle-bars" aria-hidden="true"></span>
       </button>
       <nav id="site-nav" class="site-nav" aria-label="Primary">
-        <a href="/"><span class="en">Home</span> <span class="zh" lang="zh-Hans">首页</span></a>
-        <a href="/instruments.html"><span class="en">Instruments</span> <span class="zh" lang="zh-Hans">作品</span></a>
-        <a href="/available.html" aria-current="page"><span class="en">Available</span> <span class="zh" lang="zh-Hans">现货</span></a>
-        <a href="/about.html"><span class="en">About</span> <span class="zh" lang="zh-Hans">关于</span></a>
-        <a href="/inquire.html"><span class="en">Inquire</span> <span class="zh" lang="zh-Hans">询价</span></a>
+        <a href="/"><span class="en" data-lang="en">Home</span> <span class="zh" lang="zh-Hans" data-lang="ch">首页</span></a>
+        <a href="/instruments.html"><span class="en" data-lang="en">Instruments</span> <span class="zh" lang="zh-Hans" data-lang="ch">作品</span></a>
+        <a href="/available.html" aria-current="page"><span class="en" data-lang="en">Available</span> <span class="zh" lang="zh-Hans" data-lang="ch">现货</span></a>
+        <a href="/about.html"><span class="en" data-lang="en">About</span> <span class="zh" lang="zh-Hans" data-lang="ch">关于</span></a>
+        <a href="/inquire.html"><span class="en" data-lang="en">Inquire</span> <span class="zh" lang="zh-Hans" data-lang="ch">询价</span></a>
       </nav>
+      </div>
     </header>
 
     <main id="content" class="page-main">
       <header class="page-head wrap">
-        <p class="kicker">Available <span class="zh" lang="zh-Hans">现货</span></p>
+        <p class="kicker"><span data-lang="en">Available</span> <span class="zh" lang="zh-Hans" data-lang="ch">现货</span></p>
         <div class="bilingual">
-          <div>
-            <h1>Built to order.</h1>
+          <div data-lang="en">
+            <h1 data-lang="en">Built to order.</h1>
             <p class="lede">No guitar on this site is finished and offered for sale.</p>
           </div>
-          <div lang="zh-Hans">
+          <div lang="zh-Hans" data-lang="ch">
             <p class="zh-display">接单制作。</p>
             <p class="lede">本站没有已完工、可供出售的吉他。</p>
           </div>
@@ -56,24 +79,24 @@
 
       <div class="wrap">
         <section class="status-panel" aria-labelledby="wait-label">
-          <p class="status-label" id="wait-label">Current wait time <span lang="zh-Hans">当前等待时间</span></p>
-          <p class="status-value">To be confirmed</p>
-          <p class="status-zh" lang="zh-Hans">待确认</p>
+          <p class="status-label" id="wait-label"><span data-lang="en">Current wait time</span><span lang="zh-Hans" data-lang="ch">当前等待时间</span></p>
+          <p class="status-value" data-lang="en">To be confirmed</p>
+          <p class="status-zh" lang="zh-Hans" data-lang="ch">待确认</p>
         </section>
 
         <div class="bilingual">
-          <p>This page does not print a number of months. It does not know the queue. Ask when you write. The reply is the record of the wait.</p>
-          <p lang="zh-Hans">这一页不写“几个月”。它不知道实际排期。写信时问。等待时间以回复为准。</p>
+          <p data-lang="en">This page does not print a number of months. It does not know the queue. Ask when you write. The reply is the record of the wait.</p>
+          <p lang="zh-Hans" data-lang="ch">这一页不写“几个月”。它不知道实际排期。写信时问。等待时间以回复为准。</p>
         </div>
 
         <ol class="steps">
           <li>
             <div class="bilingual">
-              <div>
+              <div data-lang="en">
                 <h2>Write</h2>
                 <p>Say which body you are considering, how you play, and the budget range you have in mind. If the body is undecided, say that.</p>
               </div>
-              <div lang="zh-Hans">
+              <div lang="zh-Hans" data-lang="ch">
                 <p class="zh-title">来信</p>
                 <p>写下你在考虑的箱体、你怎么弹琴，以及你心里的预算区间。箱体还没定，就写还没定。</p>
               </div>
@@ -81,11 +104,11 @@
           </li>
           <li>
             <div class="bilingual">
-              <div>
+              <div data-lang="en">
                 <h2>He replies</h2>
                 <p>Peng Lei says whether he can build that guitar, and what the wait is at that time.</p>
               </div>
-              <div lang="zh-Hans">
+              <div lang="zh-Hans" data-lang="ch">
                 <p class="zh-title">他回复</p>
                 <p>彭磊会说明能不能做，以及那时实际要等多久。</p>
               </div>
@@ -93,11 +116,11 @@
           </li>
           <li>
             <div class="bilingual">
-              <div>
+              <div data-lang="en">
                 <h2>Agree, then build</h2>
                 <p>Work starts when both of you agree. This site does not take a deposit and does not reserve a guitar.</p>
               </div>
-              <div lang="zh-Hans">
+              <div lang="zh-Hans" data-lang="ch">
                 <p class="zh-title">谈妥，再做</p>
                 <p>双方同意之后才开工。本站不收订金，也不预留吉他。</p>
               </div>
@@ -108,15 +131,15 @@
         <div class="cta-row">
           <a class="btn btn-fill" href="/inquire.html">
             <span class="btn-text">
-              <span class="btn-en">Write to him</span>
-              <span class="btn-zh" lang="zh-Hans">写信</span>
+              <span class="btn-en" data-lang="en">Write to him</span>
+              <span class="btn-zh" lang="zh-Hans" data-lang="ch">写信</span>
             </span>
             <span class="btn-arrow" aria-hidden="true">→</span>
           </a>
           <a class="btn btn-line" href="/instruments.html">
             <span class="btn-text">
-              <span class="btn-en">View body styles</span>
-              <span class="btn-zh" lang="zh-Hans">查看箱体</span>
+              <span class="btn-en" data-lang="en">View body styles</span>
+              <span class="btn-zh" lang="zh-Hans" data-lang="ch">查看箱体</span>
             </span>
             <span class="btn-arrow" aria-hidden="true">→</span>
           </a>
@@ -127,8 +150,8 @@
     <footer class="site-footer">
       <div class="footer-inner">
         <div>
-          <p>Independent luthier. Handmade in small numbers.</p>
-          <p class="zh-line" lang="zh-Hans">独立制琴。小批量手工。</p>
+          <p data-lang="en">Independent luthier. Handmade in small numbers.</p>
+          <p class="zh-line" lang="zh-Hans" data-lang="ch">独立制琴。小批量手工。</p>
         </div>
         <a class="footer-mail" href="mailto:inquire@pengleiguitars.com">
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">

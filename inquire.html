@@ -1,9 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
   <head>
+    <script>
+      ;(function () {
+        var lang = "en"
+        try {
+          var query = new URLSearchParams(location.search).get("lang")
+          var stored = localStorage.getItem("plg-lang")
+          if (query === "en" || query === "ch") lang = query
+          else if (stored === "ch") lang = "ch"
+          if (query === "en" || query === "ch") localStorage.setItem("plg-lang", query)
+        } catch (error) {}
+        document.documentElement.dataset.lang = lang
+        document.documentElement.lang = lang === "ch" ? "zh-Hans" : "en"
+      })()
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inquire | Peng Lei Guitars</title>
+    <title data-title-en="Inquire | Peng Lei Guitars" data-title-ch="询价 | 制琴师 · 彭磊">Inquire | Peng Lei Guitars</title>
     <meta
       name="description"
       content="Write to Peng Lei about a handmade steel-string guitar. The form prepares an email in your browser. It does not take payment or reserve an instrument."
@@ -17,126 +31,139 @@
     />
     <style>
       body { margin: 0; background: #12100e; color: #f4efe8; }
+      html[data-lang="en"] [data-lang="ch"],
+      html[data-lang="ch"] [data-lang="en"] { display: none !important; }
     </style>
   </head>
   <body>
-    <a class="skip" href="#content">Skip to content</a>
+    <a class="skip" href="#content"><span data-lang="en">Skip to content</span><span lang="zh-Hans" data-lang="ch">跳到正文</span></a>
     <header class="site-header">
       <a class="brand" href="/">
-        <span class="brand-en">Peng Lei Guitars</span>
-        <span class="brand-zh" lang="zh-Hans">制琴师 · 彭磊</span>
+        <span class="brand-en" data-lang="en">Peng Lei Guitars</span>
+        <span class="brand-zh" lang="zh-Hans" data-lang="ch">制琴师 · 彭磊</span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="sr-only">Open menu</span>
+      <div class="header-end">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-switch-btn" data-set-lang="en" aria-pressed="true">EN</button>
+          <span class="lang-switch-sep" aria-hidden="true">|</span>
+          <button type="button" class="lang-switch-btn" data-set-lang="ch" aria-pressed="false">CH</button>
+        </div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only" data-open-en="Open menu" data-close-en="Close menu" data-open-ch="打开菜单" data-close-ch="关闭菜单">Open menu</span>
         <span class="nav-toggle-bars" aria-hidden="true"></span>
       </button>
       <nav id="site-nav" class="site-nav" aria-label="Primary">
-        <a href="/"><span class="en">Home</span> <span class="zh" lang="zh-Hans">首页</span></a>
-        <a href="/instruments.html"><span class="en">Instruments</span> <span class="zh" lang="zh-Hans">作品</span></a>
-        <a href="/available.html"><span class="en">Available</span> <span class="zh" lang="zh-Hans">现货</span></a>
-        <a href="/about.html"><span class="en">About</span> <span class="zh" lang="zh-Hans">关于</span></a>
-        <a href="/inquire.html" aria-current="page"><span class="en">Inquire</span> <span class="zh" lang="zh-Hans">询价</span></a>
+        <a href="/"><span class="en" data-lang="en">Home</span> <span class="zh" lang="zh-Hans" data-lang="ch">首页</span></a>
+        <a href="/instruments.html"><span class="en" data-lang="en">Instruments</span> <span class="zh" lang="zh-Hans" data-lang="ch">作品</span></a>
+        <a href="/available.html"><span class="en" data-lang="en">Available</span> <span class="zh" lang="zh-Hans" data-lang="ch">现货</span></a>
+        <a href="/about.html"><span class="en" data-lang="en">About</span> <span class="zh" lang="zh-Hans" data-lang="ch">关于</span></a>
+        <a href="/inquire.html" aria-current="page"><span class="en" data-lang="en">Inquire</span> <span class="zh" lang="zh-Hans" data-lang="ch">询价</span></a>
       </nav>
+      </div>
     </header>
 
     <main id="content" class="page-main">
       <div class="wrap inquire-layout">
         <header class="inquire-intro">
-          <p class="kicker">Inquire <span class="zh" lang="zh-Hans">询价</span></p>
-          <h1>Write to Peng Lei.</h1>
-          <p class="zh-display inquire-zh" lang="zh-Hans">写信给彭磊。</p>
-          <p class="hint inquire-lead">This is a letter, not an order. Nothing is reserved, and nothing is charged on this page.</p>
-          <p class="hint" lang="zh-Hans">这是一封信，不是订单。这一页不会预留吉他，也不会收款。</p>
+          <p class="kicker"><span data-lang="en">Inquire</span> <span class="zh" lang="zh-Hans" data-lang="ch">询价</span></p>
+          <h1 data-lang="en">Write to Peng Lei.</h1>
+          <p class="zh-display inquire-zh" lang="zh-Hans" data-lang="ch">写信给彭磊。</p>
+          <p class="hint inquire-lead" data-lang="en">This is a letter, not an order. Nothing is reserved, and nothing is charged on this page.</p>
+          <p class="hint" lang="zh-Hans" data-lang="ch">这是一封信，不是订单。这一页不会预留吉他，也不会收款。</p>
           <a class="mail-address" href="mailto:inquire@pengleiguitars.com">inquire@pengleiguitars.com</a>
-          <p class="hint">If the form is awkward, write to that address from your own mail.</p>
-          <p class="hint" lang="zh-Hans">如果表单不好用，用你自己的邮箱写到这个地址即可。</p>
+          <p class="hint" data-lang="en">If the form is awkward, write to that address from your own mail.</p>
+          <p class="hint" lang="zh-Hans" data-lang="ch">如果表单不好用，用你自己的邮箱写到这个地址即可。</p>
         </header>
 
         <div>
           <form id="inquire-form" method="post" action="mailto:inquire@pengleiguitars.com" enctype="text/plain">
             <div class="fields">
               <div class="field">
-                <label for="name">Name <span class="zh" lang="zh-Hans">姓名</span></label>
+                <label for="name"><span data-lang="en">Name</span><span class="zh" lang="zh-Hans" data-lang="ch">姓名</span></label>
                 <input id="name" name="name" type="text" autocomplete="name" required maxlength="120" />
               </div>
               <div class="field">
-                <label for="country">Country or region <span class="zh" lang="zh-Hans">国家或地区</span></label>
+                <label for="country"><span data-lang="en">Country or region</span><span class="zh" lang="zh-Hans" data-lang="ch">国家或地区</span></label>
                 <input id="country" name="country" type="text" autocomplete="country-name" required maxlength="120" />
               </div>
               <div class="field">
-                <label for="type">Guitar type of interest <span class="zh" lang="zh-Hans">感兴趣的琴型</span></label>
+                <label for="type"><span data-lang="en">Guitar type of interest</span><span class="zh" lang="zh-Hans" data-lang="ch">感兴趣的琴型</span></label>
                 <select id="type" name="type" required>
-                  <option>Not sure yet / 尚未确定</option>
-                  <option>Dreadnought / D 型</option>
-                  <option>Orchestra Model (OM)</option>
-                  <option>000</option>
-                  <option>Slope-shoulder / 斜肩</option>
-                  <option>Something else — described in the message / 其他，见留言</option>
+                  <option data-en="Not sure yet" data-ch="尚未确定">Not sure yet</option>
+                  <option data-en="Dreadnought" data-ch="D 型">Dreadnought</option>
+                  <option data-en="Orchestra Model (OM)" data-ch="Orchestra Model (OM)">Orchestra Model (OM)</option>
+                  <option data-en="000" data-ch="000">000</option>
+                  <option data-en="Slope-shoulder" data-ch="斜肩">Slope-shoulder</option>
+                  <option data-en="Something else — described in the message" data-ch="其他，见留言">Something else — described in the message</option>
                 </select>
               </div>
               <div class="field">
-                <label for="style">Playing style <span class="zh" lang="zh-Hans">演奏方式</span></label>
-                <p class="field-hint" id="style-hint">For example: fingerstyle, flatpicking, strumming with a voice, or a mix. <span lang="zh-Hans">例如：指弹、拨片、边弹边唱，或混合。</span></p>
-                <input id="style" name="style" type="text" required maxlength="160" aria-describedby="style-hint" placeholder="Fingerstyle, flatpicking…" />
+                <label for="style"><span data-lang="en">Playing style</span><span class="zh" lang="zh-Hans" data-lang="ch">演奏方式</span></label>
+                <p class="field-hint" id="style-hint"><span data-lang="en">For example: fingerstyle, flatpicking, strumming with a voice, or a mix.</span><span lang="zh-Hans" data-lang="ch">例如：指弹、拨片、边弹边唱，或混合。</span></p>
+                <input id="style" name="style" type="text" required maxlength="160" aria-describedby="style-hint" placeholder="Fingerstyle, flatpicking…" data-ph-en="Fingerstyle, flatpicking…" data-ph-ch="指弹、拨片……" />
               </div>
               <div class="field">
-                <label for="budget">Your budget range <span class="zh" lang="zh-Hans">你的预算区间</span></label>
-                <p class="field-hint" id="budget-hint">Your range, for the conversation. It is not a price from this shop. USD is only a shared scale — use the message for another currency. <span lang="zh-Hans">这是你的区间，用来沟通，不是本工坊报价。美元只是共同刻度，其他货币请写在留言里。</span></p>
+                <label for="budget"><span data-lang="en">Your budget range</span><span class="zh" lang="zh-Hans" data-lang="ch">你的预算区间</span></label>
+                <p class="field-hint" id="budget-hint"><span data-lang="en">Your range, for the conversation. It is not a price from this shop. USD is only a shared scale — use the message for another currency.</span><span lang="zh-Hans" data-lang="ch">这是你的区间，用来沟通，不是本工坊报价。美元只是共同刻度，其他货币请写在留言里。</span></p>
                 <select id="budget" name="budget" required aria-describedby="budget-hint">
-                  <option>Not sure yet / 尚未确定</option>
-                  <option>Under USD 2,000 / 2,000 美元以下</option>
-                  <option>USD 2,000–4,000</option>
-                  <option>USD 4,000–7,000</option>
-                  <option>USD 7,000–12,000</option>
-                  <option>Above USD 12,000 / 12,000 美元以上</option>
-                  <option>Another currency — written in the message / 其他货币，见留言</option>
+                  <option data-en="Not sure yet" data-ch="尚未确定">Not sure yet</option>
+                  <option data-en="Under USD 2,000" data-ch="2,000 美元以下">Under USD 2,000</option>
+                  <option data-en="USD 2,000–4,000" data-ch="USD 2,000–4,000">USD 2,000–4,000</option>
+                  <option data-en="USD 4,000–7,000" data-ch="USD 4,000–7,000">USD 4,000–7,000</option>
+                  <option data-en="USD 7,000–12,000" data-ch="USD 7,000–12,000">USD 7,000–12,000</option>
+                  <option data-en="Above USD 12,000" data-ch="12,000 美元以上">Above USD 12,000</option>
+                  <option data-en="Another currency — written in the message" data-ch="其他货币，见留言">Another currency — written in the message</option>
                 </select>
               </div>
               <div class="field">
-                <label for="message">Message <span class="zh" lang="zh-Hans">留言</span></label>
+                <label for="message"><span data-lang="en">Message</span><span class="zh" lang="zh-Hans" data-lang="ch">留言</span></label>
                 <textarea id="message" name="message" required minlength="8" maxlength="4000"></textarea>
               </div>
             </div>
             <div class="form-actions">
               <button class="btn btn-fill" type="submit">
                 <span class="btn-text">
-                  <span class="btn-en">Prepare message</span>
-                  <span class="btn-zh" lang="zh-Hans">生成信件</span>
+                  <span class="btn-en" data-lang="en">Prepare message</span>
+                  <span class="btn-zh" lang="zh-Hans" data-lang="ch">生成信件</span>
                 </span>
                 <span class="btn-arrow" aria-hidden="true">→</span>
               </button>
             </div>
-            <p class="hint form-store-note">The page keeps the note in this browser only long enough to hand it to your email app. It is not stored.</p>
-            <p class="hint" lang="zh-Hans">这一页只在浏览器里把信交给你的邮件应用，不保存。</p>
+            <p class="hint form-store-note" data-lang="en">The page keeps the note in this browser only long enough to hand it to your email app. It is not stored.</p>
+            <p class="hint" lang="zh-Hans" data-lang="ch">这一页只在浏览器里把信交给你的邮件应用，不保存。</p>
           </form>
 
           <noscript>
-            <p class="hint form-store-note">
+            <p class="hint form-store-note" data-lang="en">
               JavaScript is off, so the form cannot assemble the letter. Email
               <a href="mailto:inquire@pengleiguitars.com">inquire@pengleiguitars.com</a>
               directly.
             </p>
+            <p class="hint form-store-note" lang="zh-Hans" data-lang="ch">
+              没有 JavaScript，表单无法生成信件。请直接写到
+              <a href="mailto:inquire@pengleiguitars.com">inquire@pengleiguitars.com</a>。
+            </p>
           </noscript>
 
           <div id="form-result" class="form-result" hidden role="status" aria-live="polite">
-            <h2>Ready to send</h2>
-            <p class="zh-title" lang="zh-Hans">可以发送了</p>
-            <p>This page does not deliver the message. Open it in your email app, or copy the text and send it yourself.</p>
-            <p lang="zh-Hans">本页不会替你送达。请在邮件应用中打开，或复制正文自己发送。</p>
+            <h2 data-lang="en">Ready to send</h2>
+            <p class="zh-title" lang="zh-Hans" data-lang="ch">可以发送了</p>
+            <p data-lang="en">This page does not deliver the message. Open it in your email app, or copy the text and send it yourself.</p>
+            <p lang="zh-Hans" data-lang="ch">本页不会替你送达。请在邮件应用中打开，或复制正文自己发送。</p>
             <p id="mailto-warn" class="warn" hidden>
-              This note is long for a mailto link. Copy the text into an email instead. The button opens a blank message to the same address.
-              <span lang="zh-Hans">正文较长，不适合放进 mailto 链接。请复制到邮件里。按钮只会打开一封寄往同一地址的空信。</span>
+              <span data-lang="en">This note is long for a mailto link. Copy the text into an email instead. The button opens a blank message to the same address.</span>
+              <span lang="zh-Hans" data-lang="ch">正文较长，不适合放进 mailto 链接。请复制到邮件里。按钮只会打开一封寄往同一地址的空信。</span>
             </p>
             <div class="form-actions">
               <a class="btn btn-fill" id="mailto-link" href="mailto:inquire@pengleiguitars.com">
                 <span class="btn-text">
-                  <span class="btn-en">Open in email</span>
-                  <span class="btn-zh" lang="zh-Hans">打开邮件</span>
+                  <span class="btn-en" data-lang="en">Open in email</span>
+                  <span class="btn-zh" lang="zh-Hans" data-lang="ch">打开邮件</span>
                 </span>
               </a>
-              <button class="btn btn-line btn-small" id="copy-message" type="button">Copy 复制</button>
+              <button class="btn btn-line btn-small" id="copy-message" type="button"><span data-lang="en">Copy</span><span lang="zh-Hans" data-lang="ch">复制</span></button>
             </div>
-            <label class="sr-only" for="composed">Prepared letter</label>
+            <label class="sr-only" for="composed"><span data-lang="en">Prepared letter</span><span lang="zh-Hans" data-lang="ch">生成的信件</span></label>
             <textarea id="composed" readonly></textarea>
           </div>
         </div>
@@ -146,8 +173,8 @@
     <footer class="site-footer">
       <div class="footer-inner">
         <div>
-          <p>Independent luthier. Handmade in small numbers.</p>
-          <p class="zh-line" lang="zh-Hans">独立制琴。小批量手工。</p>
+          <p data-lang="en">Independent luthier. Handmade in small numbers.</p>
+          <p class="zh-line" lang="zh-Hans" data-lang="ch">独立制琴。小批量手工。</p>
         </div>
         <a class="footer-mail" href="mailto:inquire@pengleiguitars.com">
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">

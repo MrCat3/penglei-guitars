@@ -500,10 +500,121 @@ h2 {
 }
 
 .bilingual {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem 3rem;
-  align-items: start;
+  display: block;
+}
+
+html[data-lang="en"] [data-lang="ch"],
+html[data-lang="ch"] [data-lang="en"] {
+  display: none !important;
+}
+
+.header-end {
+  display: flex;
+  align-items: center;
+  gap: 1.35rem;
+  min-width: 0;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  flex: none;
+}
+
+.lang-switch-btn {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  padding: 0.45rem 0.12rem 0.4rem;
+  cursor: pointer;
+}
+
+.lang-switch-btn[aria-pressed="true"] {
+  color: var(--text);
+  box-shadow: inset 0 -1px 0 currentColor;
+}
+
+.lang-switch-sep {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1;
+}
+
+html[data-lang="ch"] .brand-zh {
+  margin-top: 0;
+  color: var(--text);
+  font-size: 1.45rem;
+  line-height: 1.15;
+}
+
+html[data-lang="ch"] .hero-zh {
+  margin-top: 0;
+  color: var(--text);
+  font-size: clamp(2.15rem, 3.4vw, 3.15rem);
+  line-height: 1.25;
+  letter-spacing: 0;
+  max-width: 14em;
+}
+
+html[data-lang="ch"] .zh-display {
+  color: var(--text);
+  font-size: clamp(2.15rem, 4vw, 3.35rem);
+  line-height: 1.25;
+}
+
+html[data-lang="ch"] .zh-title,
+html[data-lang="ch"] .zh-kicker {
+  color: var(--text);
+  font-size: clamp(1.45rem, 2vw, 1.8rem);
+  line-height: 1.3;
+  margin-bottom: 0.7rem;
+}
+
+html[data-lang="ch"] .site-nav .zh,
+html[data-lang="ch"] .kicker .zh,
+html[data-lang="ch"] .model h2 .zh,
+html[data-lang="ch"] .btn-zh,
+html[data-lang="ch"] .shape-zh,
+html[data-lang="ch"] .status-zh,
+html[data-lang="ch"] .site-footer .zh-line,
+html[data-lang="ch"] .placeholder-tag [lang="zh-Hans"] {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  opacity: 1;
+  letter-spacing: inherit;
+}
+
+html[data-lang="ch"] .btn-zh {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+html[data-lang="ch"] .status-zh {
+  font-family: var(--serif-zh);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+html[data-lang="ch"] .shape-zh {
+  font-family: var(--serif-zh);
+  font-size: 1.25rem;
+}
+
+html[data-lang="ch"] .site-footer .zh-line {
+  font-size: 0.95rem;
+}
+
+html[data-lang="ch"] .model h2 .zh {
+  font-family: var(--serif-zh);
+  font-size: 1em;
 }
 
 .bilingual p + p {
@@ -922,7 +1033,8 @@ textarea:user-invalid {
     grid-template-columns: 1fr;
   }
 
-  .brand-en {
+  .brand-en,
+  html[data-lang="ch"] .brand-zh {
     font-size: 1.2rem;
   }
 
